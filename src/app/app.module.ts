@@ -3,13 +3,19 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { WjGridModule } from 'wijmo/wijmo.angular2.grid';
+
+
 import { AppComponent } from './app.component';
+import { PopupComponent } from './popup/popup.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PopupComponent
   ],
   imports: [
+    WjGridModule,
     BrowserModule,
     FormsModule,
     HttpModule
