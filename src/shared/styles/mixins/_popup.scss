@@ -1,0 +1,161 @@
+@import './flexbox';
+@import './scrollbar';
+@import './link';
+@import './button';
+
+@import '../variables/colors';
+@import '../variables/fonts';
+
+$popup-padding: .5rem;
+
+$popup-inner-max-width: calc( 100vw - #{ 2 * $popup-padding } );
+$popup-inner-max-height: calc( 100vh - #{ 2 * $popup-padding } );
+
+@mixin popup-container-outer{
+    @include flexbox(column, center, center);
+    position: fixed;
+    top: 0;
+    left: 0;
+    // to hide whole view
+    width: 100vw;
+    height: 100vh;
+
+    // wijom grid 
+    z-index: 1501;
+
+    background: rgba(0,0,0,.3);
+}
+
+@mixin popup-container-inner(
+    $width, 
+    $height
+){
+    @include invisible-scrollbar;
+    overflow: auto;
+    // because .close-container is positioned absolute to this inner container
+    position: relative;
+    box-sizing: border-box;
+
+    width: $width;
+    max-width: $popup-inner-max-width;
+
+    height: $height;
+    max-height: $popup-inner-max-height;
+
+    background: $popup-background;
+    box-shadow: 0 0 13px $popup-background;
+
+    border: 1px solid $border-color;
+
+    padding: $popup-padding;
+
+    // "X" button on the top right corner of popup
+    .close-container{
+        @include flexbox(column, center, center);
+        position: absolute;
+        top: .1rem;
+        right: .1rem;
+
+        width: 1.5rem;
+        height: 1.5rem;
+
+        cursor: pointer;
+
+        a{
+            @include flexbox(column, center, center);
+            @include link;
+
+            width: 1.5rem;
+            height: 1.5rem; 
+        }
+
+        &:hover{
+            i{
+                color: $orange;
+            }
+        }
+
+        i{
+            color: $icon-color;
+        }
+    }
+}
+
+@mixin popup-title() {
+    color: $white-font-color;
+}
+
+@mixin popup-section(
+    $width,
+    $content-direction
+){
+    width: calc( #{ $width } - #{ $popup-padding * 2 } );
+
+    .section-heading-area{
+        @include flexbox(row, center, flex-start);
+
+        i{ 
+            color: $orange;
+            margin: 0 .3rem 0 0;
+        }
+
+        p{  
+            font-family: Tahoma, Geneva, Verdana, sans-serif;
+            color: $white-font-color;
+            font-size: .9rem;
+        }
+    }
+
+    .section-content-area{
+        @include flexbox($content-direction, flex-start, flex-start);
+        margin: .25rem 0;
+    }
+}
+
+@mixin popup-action-container(
+    $width, 
+    $max-width: $width
+){
+    @include flexbox(row, center, flex-end);
+
+    width: calc( #{ $width } - #{ $popup-padding * 2 } );
+    max-width: calc( #{ $max-width } - #{ $popup-padding * 2 } );
+
+    min-height: 1.5rem;
+
+    margin-top: .3rem;
+
+    button{
+        @include prism-button;
+        position: relative;
+
+        &:nth-child(n){
+            margin: 0 2px;
+        }
+
+        &:first-child{
+            margin-left: 0;
+        }
+
+        &:last-child{
+            margin-right: 0;
+        }
+
+        &.processing{
+            padding-right: 2rem;
+
+            i{
+                position: absolute;
+                right: .3rem;
+                top: .35rem;
+
+                font-size: $global-icon-font-size;
+                color: $main-background;
+            }
+        }
+
+        &.processing:hover i:before{
+            color: $orange;
+        }
+    }
+}

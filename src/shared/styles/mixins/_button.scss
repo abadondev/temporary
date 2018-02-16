@@ -1,0 +1,53 @@
+@import '../variables/colors';
+@import '../variables/fonts';
+
+@mixin prism-wijmo-imitation-link-button{
+    
+    background: $orange;
+    
+    border: 1px solid $orange;
+
+    font-size: $global-button-font-size;
+    font-weight: bold;
+    color: $popup-background;
+
+    text-align: center;
+
+    &:hover{
+        background: $alpha;
+        color: $orange;
+    }
+}
+
+@mixin prism-button{
+    -webkit-appearance: none;
+    
+    background: $orange;
+    border: 1px solid $orange;
+
+    padding: 6px 20px;
+
+    font-size: $global-button-font-size;
+    font-weight: bold;
+    color: $popup-background;
+
+    text-align: center;
+
+    &:hover {
+        background: $alpha;
+        color: $orange;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &:disabled {
+        background: $grey;
+        border-color: $popup-background;
+
+        &:hover {
+            color: $popup-background;
+        }
+    }
+}

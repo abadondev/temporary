@@ -1,0 +1,17 @@
+@import '../variables/colors';
+
+@mixin link{
+    &:link, &:visited {
+        color: $white-font-color;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    &:link:active, &:visited:active {
+        color: $white-font-color;
+    }
+}
+
+@mixin prism-wijmo-link($color: $orange){
+    color: $color;
+}

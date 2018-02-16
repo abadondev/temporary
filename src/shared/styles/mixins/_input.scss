@@ -1,0 +1,135 @@
+@import '../variables/colors';
+@import '../variables/fonts';
+
+@mixin prism-input(
+    $background: none, 
+    $border-bottom-color: $orange,
+    $font-size: $global-input-font-size
+){
+    -webkit-appearance: none;
+
+    background: $background;
+
+    outline: none;
+
+    border: none;
+    border-bottom: 1px solid $border-bottom-color;
+    border-radius: 0;
+
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    font-size: $font-size;
+    color: $white-font-color;
+
+    &::placeholder{
+        color: $global-placeholder-color;
+        font-size: $font-size;
+        //font-weight: 200;
+    }
+
+    &:hover, &:focus{
+        outline: none;
+        box-shadow: none;
+    }
+
+    &:focus{
+        border-color: $border-bottom-color;
+    }
+
+    &[type=number]::-webkit-inner-spin-button,
+    &[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+
+@mixin prism-textarea(
+    $resize: vertical, 
+    $font-size: $global-textarea-font-size
+){
+    background: $alpha;
+    border-color: $orange;
+
+    color: $white-font-color;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    font-size: $font-size;
+
+    resize: $resize;
+
+    &:focus{
+        outline: none;
+    }
+
+    &::placeholder{
+        font-size: $font-size;
+        color: $global-placeholder-color;
+    }
+}
+
+@mixin prism-checkbox(
+    $default-color: $orange,
+    $disabled-color: $grey,
+    $checked-color: $orange,
+    $hover-color: $orange
+){
+    -webkit-appearance: none;
+    min-width: 1rem;
+    
+    margin-bottom: 0; // icon definition contains empty bottom space 
+
+    &:focus{
+        outline: none;
+    }
+
+    &:before{
+        content: "\f096";
+		font-family: 'FontAwesome';
+		font-size: $global-checkbox-font-size;
+        color: $default-color;
+    }
+
+    &:checked:before{
+        content: "\f046";
+		font-family: 'FontAwesome';
+        color: $checked-color;
+    }
+
+    &:disabled:before{
+        color: $disabled-color;
+    }
+
+    &:hover:before{
+        color: $hover-color;
+    }   
+}
+
+@mixin prism-radiobutton(
+    $default-color: $orange,
+    $disabled-color: $grey,
+    $checked-color: $orange,
+    $hover-color: $orange
+){
+    -webkit-appearance: none;
+    
+    margin-bottom: 0;
+
+    &:before{
+        content: "\f10c";
+		font-family: 'FontAwesome';
+		font-size: $global-radio-font-size;
+        color: $default-color;
+    }
+
+    &:checked:before{
+        content: "\f192";
+		font-family: 'FontAwesome';
+        color: $checked-color;
+    }
+
+    &:disabled:before{
+        color: $disabled-color;
+    }
+
+    &:hover:before{
+        color: $hover-color;
+    }   
+}

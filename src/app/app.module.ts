@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { WjGridModule } from 'wijmo/wijmo.angular2.grid';
-
+import { WjOlapModule } from 'wijmo/wijmo.angular2.olap';
 
 import { AppComponent } from './app.component';
 import { PopupComponent } from './popup/popup.component';
@@ -15,6 +15,7 @@ import { PopupComponent } from './popup/popup.component';
     PopupComponent
   ],
   imports: [
+    WjOlapModule,
     WjGridModule,
     BrowserModule,
     FormsModule,

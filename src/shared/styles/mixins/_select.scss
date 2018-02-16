@@ -1,0 +1,42 @@
+@charset 'UTF-8';
+
+@import './flexbox';
+
+@import '../variables/colors';
+@import '../variables/fonts';
+
+@mixin prism-select(
+    $select-font-size: $global-select-font-size,
+    $option-font-size: $global-option-font-size
+) {
+    box-sizing: border-box;
+    border: 1px solid $border-color;
+
+    background: none;
+
+    font-size: $select-font-size;
+    color: $grey-font-color;
+    
+    padding: 1px 0 1px .1rem;
+
+    &:focus {
+        outline: none;
+        border-color: $orange;
+    }
+
+    &:hover {
+        border-color: $orange;
+    }
+
+    &[disabled] {
+        &:hover {
+            border-color: $border-color;
+        }
+    }
+
+    option {
+        background: $popup-background;
+        font-size: $option-font-size;
+        color: $white-font-color;
+    }
+}

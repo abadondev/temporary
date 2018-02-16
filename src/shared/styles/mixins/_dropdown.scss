@@ -1,0 +1,163 @@
+@charset 'UTF-8';
+
+@import './flexbox';
+@import './link';
+
+@import '../variables/colors';
+@import '../variables/indexes';
+
+@mixin dropdown-wrapper(){
+    position: relative;
+}
+
+@mixin dropdown-icon-wrapper($width, $height){
+    @include flexbox(row, center, center);
+    
+    width: $width;
+    height: $height;
+
+    box-sizing: border-box;
+    border: 1px solid $border-color;
+    border-radius: 0.25rem;
+
+    margin-top: -1px;
+
+    transition: color .1s linear;
+    transition: background-color .1s linear;
+    
+    overflow: hidden;
+    cursor: pointer;
+
+    i{
+        color: $icon-color;
+    }
+
+    span{
+        color: $white-font-color;
+        font-size: .8rem;
+        margin-left: .5rem;
+    }
+
+    &:hover{
+        background-color: $orange;
+        i, span{
+            color: $main-background;
+        }
+    }
+}
+
+@mixin dropdown-list($width, $top, $right, $bottom, $left){
+    // to prevent displaying empty border
+    box-sizing: border-box;
+    position: absolute;
+    width: $width;
+    height: auto;
+    // as a default is hidden
+    visibility: hidden;
+    overflow: hidden;
+    //because wijmo grids have 1500
+    z-index: $popup-z-index;
+    
+    background: $popup-background;
+    box-shadow: 0 0 13px $popup-background;
+
+    border-radius: 0.25rem;
+    border: 1px solid $border-color;
+
+    // position of dropdown
+    @if $top != 'none' {
+        top: $top;
+    }
+
+    @if $right != 'none' {
+        right: $right;
+    }
+
+    @if $bottom != 'none' {
+        bottom: $bottom;
+    }
+
+    @if $left != 'none' {
+        left: $left;
+    }  
+
+    ul{
+        height: auto;
+    }
+
+    li{
+        @include flexbox(row, center, flex-start);
+        @include link;
+
+        width: $width;
+        height: 2rem;
+
+        cursor: pointer;
+
+        padding-left: .75rem;
+
+        &:hover{
+            background: $orange;
+
+            // while some actions are processing and the additional icon is applied to view
+            i.loading{
+                color: $main-background;
+            }
+        }
+
+        i{
+            @include flexbox(row, center, center);
+            width: .9rem;
+
+            margin-right: .5rem;
+            
+            font-size: .9rem;
+            color: $white-font-color;
+
+            &.dropdown-icon-1x{
+                font-size: 1rem;
+            }
+
+            &.dropdown-icon-2x{
+                font-size: 1.1rem;
+            }
+        }
+
+        span{
+            color: $white-font-color;
+            font-size: .8rem;
+        }
+
+        a{
+            @include flexbox(row, center, flex-start);
+            @include link;
+            
+            width: $width;
+            height: 2rem;
+            
+            font-size: .8rem;
+        }
+    }
+
+    .separator{
+        width: calc(#{$width} - 1rem);
+        margin: 0 .5rem;
+        height: 0;
+        border-bottom: 1px solid $border-color;
+    }
+
+    .group-separator{
+        width: calc(#{$width} - 1rem);
+        margin: 0 .5rem;
+        height: 1.2rem;
+        border-bottom: 1px solid $border-color;
+
+        span{
+            color: $icon-color;
+            font-size: .7rem;
+            margin-bottom: .2rem;
+            margin-left: .2rem;
+        }
+    }
+}
+

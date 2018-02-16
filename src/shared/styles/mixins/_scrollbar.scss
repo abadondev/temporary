@@ -1,0 +1,57 @@
+@import '../variables/colors';
+
+// Scrollbar colors definitions
+$track-color: $alpha;
+$corner-color: $alpha;
+
+@mixin invisible-scrollbar{
+	// styling for chrome / safari
+	&::-webkit-scrollbar {
+		width: 0px;  // for vertical scrollbars
+		height: 0px; // for horizontal scrollbars 
+	}
+	&::-webkit-scrollbar-track {
+		height: 0px;
+		width: 0px;
+	}
+	&::-webkit-scrollbar-thumb {
+		width: 0px;
+		height: 0px;
+	}
+}
+
+@mixin prism-scrollbar($thumb-color: $grey){
+	
+	// styling for chrome & safari -> they're on -webkit- engine which provides this customizations
+	&::-webkit-scrollbar {
+		width: 10px;  // for vertical scrollbars
+		height: 10px; // for horizontal scrollbars
+	}
+
+	&::-webkit-scrollbar-track {
+		width: 6px;
+		background: $track-color;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		width: 5px;
+		height: 4rem;
+
+		background: $thumb-color;
+
+		&:hover{
+			background: rgba($thumb-color, .85);
+			&:active{
+				background: rgba($thumb-color, .7);
+			}
+		}
+	}
+
+	&::-webkit-scrollbar-corner {
+		background: $corner-color;
+	}
+
+	&::-webkit-resizer {
+		// TBD
+	}
+}

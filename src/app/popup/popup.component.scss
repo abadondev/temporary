@@ -1,0 +1,65 @@
+@import '../../shared/styles/mixins/flexbox';
+@import '../../shared/styles/mixins/popup';
+@import '../../shared/styles/mixins/input';
+@import '../../shared/styles/mixins/button';
+
+.workspace-manager-outer-container{
+    @include popup-container-outer;
+}
+
+.workspace-manager-inner-container{
+    @include popup-container-inner(50rem, 32.5rem);
+}
+
+.workspace-manager-title {
+    @include popup-title();
+}
+
+.workspaces-container {
+    @include flexbox(row, flex-start, flex-start);
+}
+
+.workspace-container {
+    flex: 50% 1 1;
+    padding: .2rem;
+
+    wj-tree-view,
+    wj-flex-grid {
+        height: 25rem;
+        width: 100%;
+        margin: .4rem 0 0 0;
+        background-color: $main-background;
+    }
+}
+
+.cloud-workspace-container {
+}
+
+.local-workspace-container {
+}
+
+.search-input {
+    display: flex;
+    margin: .2rem 0 0 0;
+
+    input {
+        @include prism-input();
+        flex: 1 0 100%;
+    }
+
+    i.fa-search {
+        flex: 0 0 1rem;
+        color: $orange;
+        font-size: .6rem;
+        margin: .2rem 0 .2rem -1rem;
+    }
+}
+
+.buttons {
+    text-align: right;
+    margin-top: .2rem;
+
+    button {
+        @include prism-button();
+    }
+}

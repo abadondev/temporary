@@ -1,0 +1,23 @@
+@import '../variables/screen';
+
+///
+/// Define in this block properties that should  
+/// be appplied to screens larger than value of 
+/// $START-LARGE-SCREEN
+///
+@mixin large-screen {
+    @media screen and (min-width: $START-LARGE-SCREEN) {
+        @content;
+    }
+}
+
+///
+/// Define in this block properties that should  
+/// be appplied to screens smaller than value of 
+/// $END-SMALL-SCREEN
+///
+@mixin small-screen {
+    @media screen and (max-width: $END-SMALL-SCREEN) {
+        @content;
+    }
+}

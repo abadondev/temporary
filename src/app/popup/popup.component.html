@@ -1,6 +1,67 @@
-<wj-flex-grid #cloudWorkspaces
-[itemsSource]="data">
-<wj-flex-grid-column binding="name" header="Name" width="*" readOnly="false" ></wj-flex-grid-column>
-<wj-flex-grid-column binding="owner" header="Owner" width="*" ></wj-flex-grid-column>
-<wj-flex-grid-column binding="timestamp" header="Timestamp" width="*" ></wj-flex-grid-column>
-</wj-flex-grid>
+
+<div class="workspace-manager-outer-container">
+  <div class="workspace-manager-inner-container">
+<div class="workspaces-container">
+  <div class="workspace-container cloud-workspace-container">
+    Cloud
+    <div>
+      <div class="search-input">
+        <input type="text" #cloudWorkspaceSearch
+          [(ngModel)]="cloudSearch"
+          (keyup)="cloudWorkspaceSearchChanged($event)"
+          class="workspace-search"
+          placeholder="Search" />
+        <i class="fa fa-search"></i>
+      </div>
+
+      <wj-flex-grid #cloudWorkspaces
+        [itemsSource]="cloudWorkspaceItemsSource"
+        [childItemsPath]="'workspaces'"
+        [headersVisibility]="'None'"
+        [selectionMode]="'Row'"
+        (formatItem)="workspaceFormatItem(cloudWorkspaces, $event)">
+        <wj-flex-grid-column binding="name" header="Name" width="*" readOnly="false" ></wj-flex-grid-column>
+        <wj-flex-grid-column binding="owner" header="Owner" width="*" ></wj-flex-grid-column>
+        <wj-flex-grid-column binding="timestamp" header="Timestamp" width="*" ></wj-flex-grid-column>
+      </wj-flex-grid>
+    </div>
+  </div>
+
+  <div class="workspace-container local-workspace-container">
+    Local
+    <div>
+      <div class="search-input">
+        <input type="text" #localWorkspaceSearch
+          [(ngModel)]="localSearch"
+          (keyup)="localWorkspaceSearchChanged($event)"
+          class="workspace-search"
+          placeholder="Search" />
+        <i class="fa fa-search"></i>
+      </div>
+
+      <wj-flex-grid #localWorkspaces
+        [itemsSource]="localWorkspaceItemsSource"
+        [childItemsPath]="'workspaces'"
+        [headersVisibility]="'None'"
+        [selectionMode]="'Row'"
+        (formatItem)="workspaceFormatItem(localWorkspaces, $event)">
+        <wj-flex-grid-column binding="name" header="Name" width="*" ></wj-flex-grid-column>
+      </wj-flex-grid>
+    </div>
+  </div>
+</div>
+
+  <wj-pivot-panel
+  #thePanel
+  [itemsSource]="rawData">
+  </wj-pivot-panel>
+
+
+  <wj-pivot-grid
+  #pivotGrid
+  [itemsSource]="thePanel"
+  [showSelectedHeaders]="'All'">
+  </wj-pivot-grid>
+
+</div>
+</div>

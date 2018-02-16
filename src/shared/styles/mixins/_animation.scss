@@ -1,0 +1,14 @@
+
+@keyframes rotation {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+///
+/// Animation Usage #1
+/// apply only animation functionality to element
+///
+
+@mixin animate-rotation($timing: 1s, $how-many: infinite, $easing: linear) {
+    animation: rotation $timing $how-many $easing;
+}

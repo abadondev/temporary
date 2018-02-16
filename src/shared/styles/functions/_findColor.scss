@@ -1,0 +1,12 @@
+
+///
+/// coming soon - functionality to provide handling multiple themes for whole ui
+///
+
+@function get-color-from-theme($theme, $theme-property){
+  @if map-has-key($theme, $theme-property) {
+    @return map-get($theme, $theme-property)
+  }
+
+  @error 'Error - #{ $theme-property } is not defined in $theme';
+}

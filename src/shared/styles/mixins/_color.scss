@@ -1,0 +1,24 @@
+@mixin background-generator($count, $hover){
+
+    $color-list: 
+    // familiar colors
+        #f78a09,
+        #f7690a,
+        #f77b0a,
+        #f78c0a,
+        #f7b00a,
+        #f7c20a;
+    
+    @for $i from 1 through $count {
+        &:nth-child( #{ $i } ) {
+
+            @if $hover != 'none' {
+                &:hover{
+                    background: rgba(nth($color-list, $i), .8);
+                }
+            }  
+
+            background: nth($color-list, $i);
+        }
+    }
+}
