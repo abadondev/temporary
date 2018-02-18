@@ -18,7 +18,16 @@ export class PopupComponent implements OnInit {
 
   @ViewChild('thePanel') thePanel: any;
 
-  rawData = ['Jarocin', 'Kalisz', 'Poznan'];
+
+  rawData = [
+    {id: 1, model: "Audi", color: "red"},
+    {id: 2, model: "BMW", color: "black"},
+    {id: 3, model: "Audi", color: "yellow"},
+    {id: 4, model: "Fiat", color: "orange"},
+    {id: 5, model: "Audi", color: "gray"},
+    {id: 6, model: "Tesla", color: "pink"}
+
+  ];
   constructor() { }
 
   ngOnInit() {
